@@ -27,12 +27,16 @@ public class Main{
         // System.out.println(heap.extractMin());
         // heap.printHeap();
 
-        int[] arr = {8,7,6,5,4,9,1,1};
-        Sort sort = new Sort(arr);
+        // int[] arr = {8,7,6,5,4,9,1,1};
+        // Sort sort = new Sort(arr);
 
-        arr = sort.mergeSort(arr, 0, arr.length-1);
-        for(int i=0; i<arr.length; i++){
-            System.out.print(arr[i]);
-        }
+        // arr = sort.mergeSort(arr, 0, arr.length-1);
+        // for(int i=0; i<arr.length; i++){
+        //     System.out.print(arr[i]);
+        // }
+
+        Queue Q = new Queue();
+
+        
     }
 }
