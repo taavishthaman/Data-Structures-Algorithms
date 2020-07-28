@@ -37,5 +37,57 @@ public class Sort{
         return arr;
     }
 
+    public int[] mergeSort(int[] arr, int lo, int hi){
+
+        if(lo == hi){
+            int[] br = new int[1];
+            br[0] = arr[lo];
+            return br;
+        }
+
+        int mid = (lo+hi)/2;
+        int[] ls = mergeSort(arr,lo, mid);
+        int[] rs = mergeSort(arr, mid+1, hi);
+
+        int[] res = merge(ls, rs);
+        return res;
+    }
+
+    public int[] merge(int[] A, int[] B){
+
+        int[] merged = new int[A.length + B.length];
+
+        int i = 0;
+        int j = 0;
+        int k = 0;
+
+        while(i < A.length && j < B.length){
+            if(A[i] <= B[j]){
+                merged[k] = A[i];
+                i++;
+                k++;
+            }
+            else{
+                merged[k] = B[j];
+                j++;
+                k++;
+            }
+        }
+
+        while(i < A.length){
+            merged[k] = A[i];
+            k++;
+            i++;
+        }
+
+        while(j < B.length){
+            merged[k] = B[j];
+            j++;
+            k++;
+        }
+
+        return merged;
+    }
+
     
 }
