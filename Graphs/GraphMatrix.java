@@ -72,4 +72,41 @@ public class GraphMatrix{
             }
         }
     }
+
+    public void ConnectedComponents(){
+
+        int count = 0;
+        boolean found[] = new boolean[graph.length];
+
+        for(int i=0; i<graph.length; i++){
+            int v = i;
+            if(!found[i]){
+                BFSSub(i, found);
+                count++;
+            }
+        }
+
+        System.out.println(count);
+    }
+
+    private void BFSSub(int s, boolean[] found){
+        
+        found[s] = true;
+
+        CircularQueue Q = new CircularQueue();
+        Q.enqueue(s);
+
+        while(!Q.isEmpty()){
+            int v = Q.getFront();
+            Q.dequeue();
+            for(int i=0; i<graph.length; i++){
+                if(graph[v][i] == 1){
+                    if(!found[i]){
+                        Q.enqueue(i);
+                        found[i] = true;
+                    }
+                }
+            }
+        }
+    }
 }
