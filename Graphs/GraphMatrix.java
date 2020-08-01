@@ -1,6 +1,8 @@
 package Graphs;
+import java.util.*;
 
 import Queues.CircularQueue;
+
 
 public class GraphMatrix{
 
@@ -9,10 +11,10 @@ public class GraphMatrix{
         graph = new int[v][v];
     }
 
-    public void addUndirectedEdge(int start, int end){
+    public void addUndirectedEdge(int start, int end, int weight){
 
-        this.graph[start][end] = 1;
-        this.graph[end][start] = 1;
+        this.graph[start][end] = weight;
+        this.graph[end][start] = weight;
     }
 
     public void printGraph(){
@@ -109,4 +111,29 @@ public class GraphMatrix{
             }
         }
     }
+
+    public void dijkstra(int src){
+        int[] dist = new int[this.graph.length];
+        boolean[] sptSet = new bollean[this.graph.length];
+
+        for(int i=0; i<dist.length; i++){
+            dist[i] = 100000;
+            sptSet[i] = false;
+        }
+
+        dist[src] = 0;
+        sptSet[src] = true;
+
+        for(int count=0; count<this.graph.length-1; count++){
+            int u = minDistance(dist, sptSet);
+            sptSet[u] = true;
+
+            for(int v=0; v<this.graph.length; v++){
+                if(!sptSet[v] && graph[u][v] && dist[u] != Integer.MAX_INT && dist[u] + graph[u][v] < dist[v]){
+                    dist[v] = dist[u] + graph[u][v];
+                }
+            }
+        }
+    }
+
 }
