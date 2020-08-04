@@ -20,12 +20,13 @@ class HeapClient{
         // heap.print();
 
         ModifiedHeap heap = new ModifiedHeap();
-        Pair p = new Pair();
-        heap.add(1,7);
-        heap.add(2,10);
-        heap.add(3,4);
-        heap.add(4,7);
+         heap.add(1,7);
+         heap.add(2,10);
+         heap.add(3,4);
+         heap.add(4,7);
 
-        Pair p = heap.delete();
+         Pair p = heap.delete();
+
+         System.out.println(p.wt);
     }
 }

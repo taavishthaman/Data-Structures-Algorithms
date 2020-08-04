@@ -2,6 +2,8 @@ package Graphs;
 import java.util.*;
 
 import Queues.CircularQueue;
+import Heaps.ModifiedHeap;
+import Heaps.Pair;
 
 
 public class GraphMatrix{
@@ -113,26 +115,35 @@ public class GraphMatrix{
     }
 
     public void dijkstra(int src){
-        int[] dist = new int[this.graph.length];
-        boolean[] sptSet = new bollean[this.graph.length];
+        
+        ModifiedHeap PQ = new ModifiedHeap();
 
-        for(int i=0; i<dist.length; i++){
+        int[] dist = new int[graph.length];
+
+        for(int i=0; i<graph.length; i++){
             dist[i] = 100000;
-            sptSet[i] = false;
         }
 
         dist[src] = 0;
-        sptSet[src] = true;
+        PQ.add(src, 0);
 
-        for(int count=0; count<this.graph.length-1; count++){
-            int u = minDistance(dist, sptSet);
-            sptSet[u] = true;
+        while(!PQ.isEmpty()){
+            Pair p = PQ.delete();
+            int u = p.n;
+            int wt = p.wt;
 
-            for(int v=0; v<this.graph.length; v++){
-                if(!sptSet[v] && graph[u][v] && dist[u] != Integer.MAX_INT && dist[u] + graph[u][v] < dist[v]){
-                    dist[v] = dist[u] + graph[u][v];
+            for(int i=0; i<this.graph.length; i++){
+                if(this.graph[u][i] > 0){
+                    if(dist[i] > dist[u] + graph[u][i]){
+                        dist[i] = dist[u] + graph[u][i];
+                        PQ.add(i,dist[i]);
+                    }
                 }
             }
+        }
+
+        for(int i=0; i<this.graph.length; i++){
+            System.out.print(dist[i]);
         }
     }
 

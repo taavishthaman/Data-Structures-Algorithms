@@ -2,6 +2,7 @@
 import Graphs.GraphAdjacencyList;
 import Graphs.GraphAdjacencyListWeighted;
 import Graphs.GraphHashMap;
+import Graphs.GraphMatrix;
 
 import java.util.*;
 
@@ -60,17 +61,35 @@ class GraphClient{
 
         // g.connectedComponents();
 
-         GraphAdjacencyListWeighted graph = new GraphAdjacencyListWeighted(4);
+        //  GraphMatrix graph = new GraphMatrix(6);
 
-         graph.addUndirectedEdge(0,1,1);
-         graph.addUndirectedEdge(0,2,1);
+        //  graph.addUndirectedEdge(0,1,2);
+        //  graph.addUndirectedEdge(0,2,4);
+        //  graph.addUndirectedEdge(1,2,1);
+        //  graph.addUndirectedEdge(1,3,7);
+        //  graph.addUndirectedEdge(2,4,3);
+        //  graph.addUndirectedEdge(3,4,2);
+        //  graph.addUndirectedEdge(3,5,1);
+        //  graph.addUndirectedEdge(4,5,5);
+
+        //  graph.printGraph();
+
+        //  graph.dijkstra(0);
+        
+        GraphAdjacencyListWeighted graph = new GraphAdjacencyListWeighted(6);
+
+         graph.addUndirectedEdge(0,1,2);
+         graph.addUndirectedEdge(0,2,4);
          graph.addUndirectedEdge(1,2,1);
-         graph.addUndirectedEdge(1,3,1);
-         graph.addUndirectedEdge(2,3,1);
+         graph.addUndirectedEdge(1,3,7);
+         graph.addUndirectedEdge(2,4,3);
+         graph.addUndirectedEdge(3,4,2);
+         graph.addUndirectedEdge(3,5,1);
+         graph.addUndirectedEdge(4,5,5);
 
          graph.printGraph();
 
-         graph.DFS(0);
+         graph.dijkstra(0);
 
         // GraphHashMap graph = new GraphHashMap();
         // graph.addVertex("A");

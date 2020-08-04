@@ -1,15 +1,8 @@
 package Heaps;
 import java.util.*;
+import Heaps.Pair;
 
 public class ModifiedHeap{
-    class Pair{
-        public int n;
-        public int wt;
-        public Pair(int n, int wt){
-            this.n = n;
-            this.wt = wt;
-        }
-    }
 
     ArrayList<Pair> heap;
 
@@ -68,5 +61,12 @@ public class ModifiedHeap{
             swap(pi, min);
             downHeapify(min);
         }
+    }
+
+    public boolean isEmpty(){
+        if(heap.size() == 0){
+            return true;
+        }
+        return false;
     }
 }

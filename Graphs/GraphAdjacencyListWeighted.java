@@ -1,30 +1,31 @@
 package Graphs;
 import java.util.*;
 import Heaps.ModifiedHeap;
+import Heaps.Pair;
 
-class Pair{
+class GPair{
     int vertex;
     int weight;
-    Pair(int vertex, int weight){
+    public GPair(int vertex, int weight){
         this.vertex = vertex;
         this.weight = weight;
     }
 }
 
 public class GraphAdjacencyListWeighted{
-    ArrayList<ArrayList<Pair>> graph;
+    ArrayList<ArrayList<GPair>> graph;
 
     public GraphAdjacencyListWeighted(int v){
-        graph = new ArrayList<ArrayList<Pair>>();
+        graph = new ArrayList<ArrayList<GPair>>();
         for(int i=0; i<v; i++){
-            graph.add(new ArrayList<Pair>());
+            graph.add(new ArrayList<GPair>());
         }
     }
 
     public void addUndirectedEdge(int start, int end, int weight){
 
-        graph.get(start).add(new Pair(end, weight));
-        graph.get(end).add(new Pair(start, weight));
+        graph.get(start).add(new GPair(end, weight));
+        graph.get(end).add(new GPair(start, weight));
     }
 
     public void printGraph(){
@@ -57,33 +58,33 @@ public class GraphAdjacencyListWeighted{
     }
 
     public void dijkstra(int s){
+        
         ModifiedHeap PQ = new ModifiedHeap();
+        int[] dist = new int[this.graph.size()];
 
-        int dist[] = new int[graph.size()];
-
-        for(int i=0; i<graph.size(); i++){
-            dist[i] = 1000000;
+        for(int i=0; i<this.graph.size(); i++){
+            dist[i] = 100000;
         }
 
         dist[s] = 0;
 
-        PQ.add(s, 0);
+        PQ.add(s,0);
 
         while(!PQ.isEmpty()){
-            int[] arr = PQ.remove();
-            ArrayList<Pair> cur = cur;
-            for(int i=0; i<cur.size(); i++){
-                if(dist[cur.get(i).vertex] > dist[cur[0]] + cur.get(i).weight){
-                    dist[cur.get(i).vertex] = dist[cur[0]] + cur.get(i).weight;
-                    heap.add(graph[cur[0]].get(i).vertex, graph[cur[0]].get(i).weight);
+            Pair p = PQ.delete();
+            int u = p.n;
+            int wt = p.wt;
+            for(int i=0; i<this.graph.get(u).size(); i++){
+                if(dist[this.graph.get(u).get(i).vertex] > dist[u] +  this.graph.get(u).get(i).weight){
+                    dist[this.graph.get(u).get(i).vertex] = dist[u] + this.graph.get(u).get(i).weight;
+                    PQ.add(this.graph.get(u).get(i).vertex, dist[this.graph.get(u).get(i).vertex]);
                 }
             }
         }
 
-        for(int i=0; i<dist.length; i++){
+        for(int i=0; i<this.graph.size(); i++){
             System.out.print(dist[i]);
-        }
-
+        }        
 
     }
 
