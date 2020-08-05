@@ -7,6 +7,7 @@ class NKnights{
 	static void NKnights(boolean[][] board, int row, int col, int kpsf, int tk, String ans){
 		
 		if(kpsf == tk){
+			printBoard(row, col, board);
 			System.out.println(++count+"."+ans);
 			return;
 		}
@@ -45,5 +46,20 @@ class NKnights{
 			} 
 		}
 		return true;
-	}	
+	}
+	
+	static void printBoard(int row, int col, boolean[][] board){
+
+		for(int i=0; i<board.length; i++){
+			for(int j=0; j<board[0].length; j++){
+				if(board[i][j] == true){
+					System.out.print('K');
+				}
+				else{
+					System.out.print('.');
+				}
+			}
+			System.out.println();
+		}
+	}
 }
