@@ -35,8 +35,16 @@ public class Main{
         //     System.out.print(arr[i]);
         // }
 
-        Queue Q = new Queue();
+        // Queue Q = new Queue();
 
-        
+        Sort sort = new Sort();
+        int[] arr = {5,4,3,2,1, -1, -4, -4, -6};
+
+        //sort.bubbleSort(arr);
+        //sort.selectionSort(arr);
+        sort.insertionSort(arr);
+        for(int i : arr){
+            System.out.print(i);
+        }
     }
 }

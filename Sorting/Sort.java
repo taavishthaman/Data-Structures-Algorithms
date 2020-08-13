@@ -3,39 +3,54 @@ package Sorting;
 public class Sort{
 
     int[] arr;
+    public Sort(){
+
+    }
+
     public Sort(int[] arr){
         this.arr = arr;
     }
 
-    public int[] bubbleSort(){
-        for(int i=0; i<arr.length; i++){
+    public void bubbleSort(int[] arr){
+
+        for(int i=0; i<arr.length-1; i++){
             for(int j=0; j<arr.length-i-1; j++){
-                if(arr[j] > arr[j+1]){
+                if(arr[j+1] < arr[j]){
                     int temp = arr[j];
                     arr[j] = arr[j+1];
                     arr[j+1] = temp;
                 }
             }
         }
-        return arr;
     }
 
-    public int[] selectionSort(){
-        for(int i=0; i<arr.length; i++){
-            int min = arr[i];
-            int min_index = i;
+    public void selectionSort(int[] arr){
+
+        for(int i=0; i<arr.length-1; i++){
+            int minIdx = i;
             for(int j=i+1; j<arr.length; j++){
-                if(arr[j] < min){
-                    min = arr[j];
-                    min_index = j;
+                if(arr[j] < arr[minIdx]){
+                    minIdx = j;
                 }
             }
-            int temp = arr[i];
-            arr[i] = arr[min_index];
-            arr[min_index] = temp;
+            int temp = arr[minIdx];
+            arr[minIdx] = arr[i];
+            arr[i] = temp;
         }
-        return arr;
     }
+
+    public void insertionSort(int[] arr){
+        for(int counter=1; counter<=arr.length-1; counter++){
+            int val = arr[counter];
+            int j = counter-1;
+            while(j >= 0 && arr[j] > val){
+                arr[j+1] = arr[j];
+                j--;
+            }
+            arr[j+1] = val;
+        }
+    }
+
 
     public int[] mergeSort(int[] arr, int lo, int hi){
 

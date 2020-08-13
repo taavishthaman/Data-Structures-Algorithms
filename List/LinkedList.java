@@ -97,4 +97,49 @@ public class LinkedList <T> {
             temp = temp.next;
         }
     }
+
+    public void reverseList(){
+
+        Node prev = null;
+        Node curr = this.head;
+        Node ahead = null;
+
+        while(curr != null){
+            ahead = curr.next;
+            curr.next = prev;
+
+            prev = curr;
+            curr = ahead;
+        }
+
+        head = prev;
+    }
+
+    public void reverseK(int k){
+        head = reverseKRec(head, k);
+    }
+
+    public Node reverseKRec(Node n, int k){
+
+        Node prev = null;
+        Node curr = n;
+        Node ahead = null;
+
+        int cnt = 0;
+        while(curr != null && cnt < k){
+            ahead = curr.next;
+            curr.next = prev;
+
+            prev = curr;
+            curr = ahead;
+            cnt++;
+        }
+
+        if(curr != null){
+            n.next = reverseKRec(curr, k);
+        }
+
+        return n;
+    }
+    
 }

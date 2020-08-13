@@ -33,19 +33,30 @@ class ListClient{
         // ll.removeFromPos(6);
         // ll.printList();
 
-        DoublyLinkedList dll = new DoublyLinkedList();
+        // DoublyLinkedList dll = new DoublyLinkedList();
 
+        // for(int i=1; i<=5; i++){
+        //     dll.insertAtTail(i);
+        // }
+
+        // dll.printList();
+
+        // dll.insertAtPos(7,5);
+        // dll.printList();
+        // dll.removeFromPos(0);
+        // dll.printList();
+
+        // dll.printListBackwards();
+
+        LinkedList ll = new LinkedList();
         for(int i=1; i<=5; i++){
-            dll.insertAtTail(i);
+            ll.insertAtEnd(i*10);
         }
-
-        dll.printList();
-
-        dll.insertAtPos(7,5);
-        dll.printList();
-        dll.removeFromPos(0);
-        dll.printList();
-
-        dll.printListBackwards();
+        ll.printList();
+        ll.reverseList();
+        ll.printList();
+        System.out.println();
+        //ll.reverseK(3);
+        //ll.printList();
     }
 }
